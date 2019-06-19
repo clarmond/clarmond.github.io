@@ -1,0 +1,15 @@
+#alert-box {
+	display: none;
+	margin-top: 20px;
+}
+.container-fluid {
+	margin: 10px 5px;
+}
+#table-options th, td {
+	padding: 4px;
+}
+textarea {
+	box-sizing: border-box;
+	font-family: "Lucida Console", Monaco, monospace;
+	margin: 15px 0;
+}

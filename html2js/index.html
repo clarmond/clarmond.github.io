@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+	<meta charset="UTF-8"> 
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>HTML to JavaScript Variable</title>
+	<link rel="stylesheet" href="style.css">
+</style>
+</head>
+<body>
+	<h1 class="text-center">HTML Code to JavaScript Variable</h1>
+	<div class="container">
+		<div class="row">
+			<textarea id="html" placeholder="Enter HTML code here" class="form-control col-xs-12" rows="8"></textarea>
+		
+		</div>
+		<div class="row">
+			<textarea id="js" placeholder="JavaScript code will be displayed here" class="form-control col-xs-12" rows="8"></textarea>
+		</div>
+
+		<table id="table-options">
+			<tr>
+				<th class="text-right">
+					Quotation Style:
+				</th>
+				<td>
+					<label>
+						<input type="radio" checked name="quote" value="'">
+						Single Quote
+					</label>
+					&nbsp;&nbsp;
+					<label>
+						<input type="radio" name="quote" value='"'>
+						Double Quote
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right">
+					Maintain Spacing:
+				</th>
+				<td>
+					<label>
+						<input type="radio" checked name="spacing" value="true">
+						Yes
+					</label>
+					&nbsp;&nbsp;
+					<label>
+						<input type="radio" name="spacing" value="false">
+						No
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right">
+					<label for="max-cols">Max Columns:</label>
+				</th>
+				<td>
+					<input type="text" id="max-cols" name="maxcols" value="80" size="3">
+				</td>
+			</tr>
+		</table>
+
+		<div id="alert-box" class="alert alert-warning" role="alert">
+			Max columns is invalid.  Must be an integer greater than 15.
+		</div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>	
+
+	<script src="index.js"></script>
+</script>
+</body>
+</html>

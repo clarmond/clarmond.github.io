@@ -19,17 +19,20 @@ function updateCode() {
 	else {
 		text = text.replace(/"/g, '\\"');
 	}
-	var code = "let html = " + quoteType;
-	maxColumns = maxColumns - code.length - 1;
+	var code;
 	if (keepSpacing) {
+		code = "let html = " + quoteType;
 		text = text.replace(/\n/g, '\\n' + quoteType + ' +\n' + quoteType);
 	}
 	else {
+		code = "let html = " + quoteType + quoteType + ';\n';
+		maxColumns = maxColumns - code.length - 1;
 		text = text.replace(/^\s+/, '');
 		text = text.replace(/\n\s+/g, '');
 		text = text.replace(/[\n\r]/g, '');
 		let pattern = new RegExp('(.{' + maxColumns.toString() + '})', 'g');
-		text = text.replace(pattern, "$1" + quoteType + ' +\n' + quoteType);
+		text = text.replace(pattern, "$1" + quoteType + '\n+ ' + quoteType);
+		text = '+ ' + quoteType + text;
 	}
 	code += text + quoteType + ';';
 	$('#js').val(code);

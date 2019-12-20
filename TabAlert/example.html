@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Tab Alert Example</title>
+	<link rel="shortcut icon" href="tab-alert-icon.png" type="image/png">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<style>
+		#container {
+			margin: 20px auto;
+			width: 800px;
+		}
+		input[type="radio"] {
+			margin-right: 10px;
+		}
+		#icon-container {
+			display: grid;
+			grid-template-columns: 50% 50%;
+		}
+		#sample-code {
+			border: 1px solid gray;
+			font-family:'Courier New', Courier, monospace;
+			margin-top: 25px;
+			min-height: 100px;
+			white-space: pre-wrap;
+			padding: 5px;
+		}
+		button {
+			width: 100px
+		}
+	</style>
+
+	<script src="TabAlert.js"></script>
+
+	<script>
+	const tabAlert = new TabAlert();
+
+	let sampleOptions = {};
+
+	function updateSampleCode() {
+		const message = $('#message').val();
+		let options = `message: '${message}', `;
+		sampleOptions.message = message;
+
+		const icon = $('input[name="icon"]:checked').val();
+		if (icon) {
+			options += `icon: '${icon}', `;
+			sampleOptions.icon = icon;
+		}
+
+		const times = $('#times').val();
+		if ((times !== '') && (!isNaN(times))) {
+			options += `times: ${times}, `;
+			sampleOptions.times = times;
+		}
+
+		const delay = $('#delay').val();
+		if ((delay !== '') && (!isNaN(delay))) {
+			options += `delay: ${delay}, `;
+			sampleOptions.delay = delay;
+		}
+
+		options = options.replace(/, $/, '');
+		const code = `const tabAlert = new TabAlert();\ntabAlert.alert({${options}});`;
+		$('#sample-code').text(code);
+	}
+
+	function startExample() {
+		tabAlert.alert(sampleOptions);
+	}
+
+	function stopExample() {
+		tabAlert.stop();
+	}
+
+	$(function() {
+		$('#message').focus();
+		$('input').change(updateSampleCode);
+	});
+	</script>
+</head>
+<body>
+	<div id="container">
+		<form>
+			<div class="form-group">
+				<label for="message">Message</label>
+				<input type="message" class="form-control" id="message" placeholder="Enter a message">
+			</div>
+			<div class="form-group">
+				<label for="times">Number of Times</label>
+				<input type="times" class="form-control" id="times" placeholder="Number of times to run.  Enter 0 to run indefinitely.">
+			</div>
+			<div class="form-group">
+				<label for="delay">Delay</label>
+				<input type="delay" class="form-control" id="delay" placeholder="Animation delay in milliseconds (Default is 1000)">
+			</div>
+			<div class="form-group">
+				<label>Icon</label>
+				<div id="icon-container">
+					<div>
+						<input type="radio" name="icon" id="icon-none" value="" checked>
+						<label for="icon-none">None</label>
+						<br>
+						<input type="radio" name="icon" id="icon-bellhop-bell" value="bellhop bell">
+						<label for="icon-bellhop-bell">🛎 bellhop bell</label>
+						<br>
+						<input type="radio" name="icon" id="icon-speech-balloon" value="speech balloon">
+						<label for="icon-speech-balloon">💬 speech balloon</label>
+						<br>
+						<input type="radio" name="icon" id="icon-police-car-light" value="police car light">
+						<label for="icon-police-car-light">🚨 police car light</label>
+						<br>
+						<input type="radio" name="icon" id="icon-stop-sign" value="stop sign">
+						<label for="icon-stop-sign">🛑 stop sign</label>
+						<br>
+						<input type="radio" name="icon" id="icon-hour-glass-done" value="hour glass done">
+						<label for="icon-hour-glass-done">⌛ hour glass done</label>
+						<br>
+						<input type="radio" name="icon" id="icon-alarm-clock" value="alarm clock">
+						<label for="icon-alarm-clock">⏰ alarm clock</label>
+						<br>
+						<input type="radio" name="icon" id="icon-stopwatch" value="stopwatch">
+						<label for="icon-stopwatch">⏱ stopwatch</label>
+						<br>
+						<input type="radio" name="icon" id="icon-timer-clock" value="timer clock">
+						<label for="icon-timer-clock">⏲ timer clock</label>
+					</div>
+					<div>
+						<br>
+						<input type="radio" name="icon" id="icon-star" value="star">
+						<label for="icon-star">⭐ star</label>
+						<br>
+						<input type="radio" name="icon" id="icon-fire" value="fire">
+						<label for="icon-fire">🔥 fire</label>
+						<br>
+						<input type="radio" name="icon" id="icon-party-popper" value="party popper">
+						<label for="icon-party-popper">🎉 party popper</label>
+						<br>
+						<input type="radio" name="icon" id="icon-bell" value="bell">
+						<label for="icon-bell">🔔 bell</label>
+						<br>
+						<input type="radio" name="icon" id="icon-envelope-with-arrow" value="envelope with arrow">
+						<label for="icon-envelope-with-arrow">📩 envelope with arrow</label>
+						<br>
+						<input type="radio" name="icon" id="icon-locked" value="locked">
+						<label for="icon-locked">🔒 locked</label>
+						<br>
+						<input type="radio" name="icon" id="icon-exclamation-mark" value="exclamation mark">
+						<label for="icon-exclamation-mark">❗ exclamation mark</label>
+						<br>
+						<input type="radio" name="icon" id="icon-red-circle" value="red circle">
+						<label for="icon-red-circle">🔴 red circle</label>
+					</div>
+				</div>
+			</div>
+			<div>
+				<button class="btn btn-success" onclick="startExample(); return false;">Start</button>
+				<button class="btn btn-danger" onclick="stopExample(); return false;">Stop</button>
+			</div>
+		</form>
+		<div id="sample-code"></div>
+	</div>
+</body>
+</html>
